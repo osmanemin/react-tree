@@ -1,0 +1,17 @@
+.menuItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+  cursor: pointer;
+
+  .itemText {
+    text-decoration: none;
+    color: black;
+  }
+
+  .arrowRightIcon {
+    height: 16px;
+    width: 16px;
+  }
+}

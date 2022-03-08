@@ -4,7 +4,6 @@ import styles from "./MenuItemList.module.scss";
 
 const MenuItemList = ({ item, createItemList }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div className={styles.itemContainer}>
       <MenuItem
@@ -13,8 +12,16 @@ const MenuItemList = ({ item, createItemList }) => {
         hasSubCategory={item.subCategories}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
-      />
-      {isOpen && item.subCategories && createItemList(item.subCategories)}
+      >
+        <div
+          className={styles.subCategoryList}
+          style={{
+            height: `${isOpen ? "270px" : "0"}`,
+          }}
+        >
+          {item.subCategories && createItemList(item.subCategories)}
+        </div>
+      </MenuItem>
     </div>
   );
 };

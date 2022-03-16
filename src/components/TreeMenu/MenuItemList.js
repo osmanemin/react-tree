@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import styles from "./MenuItemList.module.scss";
 
 const MenuItemList = ({ item, createItemList }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    if (startAnimation) {
+      setIsOpen(startAnimation);
+    } else {
+      setTimeout(() => setIsOpen(startAnimation), 500);
+    }
+  }, [startAnimation]);
+
   return (
     <div className={styles.itemContainer}>
       <MenuItem
         name={item.name}
         url={item.url}
         hasSubCategory={item.subCategories}
-        setIsOpen={setIsOpen}
-        isOpen={isOpen}
+        setStartAnimation={setStartAnimation}
+        startAnimation={startAnimation}
       >
         <div
           className={styles.subCategoryList}
           style={{
-            height: `${isOpen ? "270px" : "0"}`,
+            height: `${startAnimation ? "270px" : "0px"}`,
           }}
         >
-          {item.subCategories && createItemList(item.subCategories)}
+          {isOpen && item.subCategories && createItemList(item.subCategories)}
         </div>
       </MenuItem>
     </div>

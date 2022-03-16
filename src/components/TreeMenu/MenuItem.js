@@ -5,8 +5,8 @@ const MenuItem = ({
   name,
   url,
   hasSubCategory,
-  isOpen,
-  setIsOpen,
+  startAnimation,
+  setStartAnimation,
   children,
 }) => {
   return (
@@ -15,7 +15,7 @@ const MenuItem = ({
         className={styles.menuItem}
         {...(hasSubCategory.length > 0 && {
           onClick: () => {
-            setIsOpen(!isOpen);
+            setStartAnimation(!startAnimation);
           },
         })}
       >
@@ -25,7 +25,7 @@ const MenuItem = ({
             src="/next.png"
             className={styles.arrowRightIcon}
             style={{
-              transform: `rotate(${isOpen ? "90" : "0"}deg)`,
+              transform: `rotate(${startAnimation ? "90" : "0"}deg)`,
               transition: "all 0.3s",
             }}
           />

@@ -7,7 +7,6 @@ const MenuItem = ({
   hasSubCategory,
   startAnimation,
   setStartAnimation,
-  children,
 }) => {
   return (
     <>
@@ -34,7 +33,6 @@ const MenuItem = ({
           {name}
         </a>
       </div>
-      {children}
     </>
   );
 };

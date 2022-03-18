@@ -4,9 +4,11 @@
   align-items: flex-start;
   flex-direction: column;
   padding-left: 20px;
+  overflow: hidden;
 
   .subCategoryList {
     overflow: hidden;
-    transition: all 0.5s;
+    transform-origin: top;
+    transition: all 0.3s ease;
   }
 }

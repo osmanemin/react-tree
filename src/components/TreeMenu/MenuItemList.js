@@ -10,7 +10,7 @@ const MenuItemList = ({ item, createItemList }) => {
     if (startAnimation) {
       setIsOpen(startAnimation);
     } else {
-      setTimeout(() => setIsOpen(startAnimation), 500);
+      setTimeout(() => setIsOpen(startAnimation), 200);
     }
   }, [startAnimation]);
 
@@ -22,16 +22,15 @@ const MenuItemList = ({ item, createItemList }) => {
         hasSubCategory={item.subCategories}
         setStartAnimation={setStartAnimation}
         startAnimation={startAnimation}
+      />
+      <div
+        className={styles.subCategoryList}
+        style={{
+          transform: `${startAnimation ? "scaleY(1)" : "scaleY(0)"}`,
+        }}
       >
-        <div
-          className={styles.subCategoryList}
-          style={{
-            height: `${startAnimation ? "270px" : "0px"}`,
-          }}
-        >
-          {isOpen && item.subCategories && createItemList(item.subCategories)}
-        </div>
-      </MenuItem>
+        {isOpen && item.subCategories && createItemList(item.subCategories)}
+      </div>
     </div>
   );
 };
